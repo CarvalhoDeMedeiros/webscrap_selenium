@@ -8,7 +8,7 @@ import os
 import sys
 import time
 import json
-class HapVidaExtraction(ManipulacaoOs):
+class Extraction(ManipulacaoOs):
     """ Classe responsável por extrair dados do site do L
         Encontrar os filtros, aplicar os filtros e salvar os arquivos
     Args:
@@ -35,8 +35,8 @@ class HapVidaExtraction(ManipulacaoOs):
             data = json.load(f)
 
         # Definindo usuario e senha       
-        usuario = data['credenciais_hapvida']['LOGIN']
-        senha = data['credenciais_hapvida']['SENHA']
+        usuario = data['credenciais']['LOGIN']
+        senha = data['credenciais']['SENHA']
 
         lista_credenciais = [usuario, senha]
         lista_campos = [
@@ -69,7 +69,7 @@ class HapVidaExtraction(ManipulacaoOs):
         download_dir_bradesco:str
         ):
         """ Função responsável por:
-            1. Logar no Hapvida
+            1. Logar
             2. Caminhar até a página de filtros
             3. Aplicar filtros
             4. Esperar download concluir na fila de download
